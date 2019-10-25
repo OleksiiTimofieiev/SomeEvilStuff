@@ -46,13 +46,6 @@ void NameSurnamePathFinder::FindSolution(const char* inputJasonFile, const char*
 
 	mParser.parseJSONInput();
 
-
-// if (j.find("foo") != j.end()) 
-// {
-//   // there is an entry with key "foo"
-//    std::cout << j.key() << " : " << j.value() << "\n";
-// }
-
 	// do some stuff
 
 	// json j_out;
