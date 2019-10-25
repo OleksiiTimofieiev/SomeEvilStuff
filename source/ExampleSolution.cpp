@@ -47,6 +47,29 @@ void NameSurnamePathFinder::FindSolution(const char* inputJasonFile, const char*
 	
 	json j = json::parse(i, nullptr, false);
 
+for (auto& el : j.items()) 
+{
+	if (el.key() == "ship")
+	{
+		// std::cout << el.key() << " : " << el.value() << "\n";
+		// std::cout << el["maxCarryingCapacity"];
+
+		auto test = el.value();
+
+		auto test1 = test["maxCarryingCapacity"];
+		
+		std::cout << test1["half_x"];
+
+	}
+  
+}
+
+// if (j.find("foo") != j.end()) 
+// {
+//   // there is an entry with key "foo"
+//    std::cout << j.key() << " : " << j.value() << "\n";
+// }
+
 	// do some stuff
 
 	json j_out;
@@ -59,8 +82,13 @@ void NameSurnamePathFinder::FindSolution(const char* inputJasonFile, const char*
 
 int 	main(int argc, char **argv)
 {
+	NameSurnamePathFinder mParserTest;
 
+	mParserTest.FindSolution("./jsonFiles/inputData1.json", "./test");
 	std::cout << argv[1] << std::endl;
+
+
+	
 
 	return 0;
 }
