@@ -7,7 +7,7 @@ void    CParser::parseJSONInput(void)
 {
     json j = json::parse(mInputFileStream, nullptr, false);
 
-    for (auto& el : j.items()) 
+    for (auto & el : j.items()) 
     {
         if (el.key() == "boxes")
         {
