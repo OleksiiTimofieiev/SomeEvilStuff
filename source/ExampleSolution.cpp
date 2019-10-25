@@ -55,10 +55,10 @@ void NameSurnamePathFinder::FindSolution(const char* inputJasonFile, const char*
 	// o << std::setw(4) << j_out << std::endl;
 }
 
-int 	main(void)
+int 	main(int argc, char **argv)
 {
 
-	std::cout << "C++ one love" << std::endl;
+	std::cout << argv[1] << std::endl;
 
 	return 0;
 }
