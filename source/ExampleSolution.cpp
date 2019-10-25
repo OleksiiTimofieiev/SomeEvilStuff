@@ -42,35 +42,10 @@ public:
 
 void NameSurnamePathFinder::FindSolution(const char* inputJasonFile, const char* outputFileName)
 {
-// 	std::ifstream i(inputJasonFile);
 	CParser mParser(inputJasonFile);
 
 	mParser.parseJSONInput();
 
-
-	
-// 	json j = json::parse(i, nullptr, false);
-
-// for (auto& el : j.items()) 
-// {
-// 	if (el.key() == "boxes")
-// 	{
-// 		// std::cout << el.key() << " : " << el.value() << "\n";
-// 		// std::cout << el["maxCarryingCapacity"];
-
-// 		auto test = el.value();
-
-// 		auto test1 = test[0];
-
-// 		// auto test1 = test["maxCarryingCapacity"];
-		
-// 		// std::cout << test1["half_x"];
-
-// 		std::cout << test1;
-
-// 	}
-  
-// }
 
 // if (j.find("foo") != j.end()) 
 // {
@@ -90,13 +65,9 @@ void NameSurnamePathFinder::FindSolution(const char* inputJasonFile, const char*
 
 int 	main(int argc, char **argv)
 {
-	NameSurnamePathFinder mParserTest;
+	NameSurnamePathFinder mNameSurnamePathFinder;
 
-	mParserTest.FindSolution("./jsonFiles/inputData1.json", "./test");
-	std::cout << argv[1] << std::endl;
-
-
-	
+	mNameSurnamePathFinder.FindSolution("./jsonFiles/inputData1.json", "./test");
 
 	return 0;
 }
