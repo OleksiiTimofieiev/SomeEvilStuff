@@ -49,7 +49,7 @@ void NameSurnamePathFinder::FindSolution(const char* inputJasonFile, const char*
 
 for (auto& el : j.items()) 
 {
-	if (el.key() == "ship")
+	if (el.key() == "box")
 	{
 		// std::cout << el.key() << " : " << el.value() << "\n";
 		// std::cout << el["maxCarryingCapacity"];
