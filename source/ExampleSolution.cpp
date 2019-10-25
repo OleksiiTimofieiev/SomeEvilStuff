@@ -1,12 +1,11 @@
 #include "IGalaxyPathFinder.h"
-#include "json.hpp"
+#include "CParser.hpp"
+
 
 #include <iostream>
-#include <fstream>
+
 #include <vector>
 #include <iomanip>
-
-using namespace nlohmann;
 
 struct box
 {
@@ -43,26 +42,35 @@ public:
 
 void NameSurnamePathFinder::FindSolution(const char* inputJasonFile, const char* outputFileName)
 {
-	std::ifstream i(inputJasonFile);
+// 	std::ifstream i(inputJasonFile);
+	CParser mParser(inputJasonFile);
+
+	mParser.parseJSONInput();
+
+
 	
-	json j = json::parse(i, nullptr, false);
+// 	json j = json::parse(i, nullptr, false);
 
-for (auto& el : j.items()) 
-{
-	if (el.key() == "ship")
-	{
-		// std::cout << el.key() << " : " << el.value() << "\n";
-		// std::cout << el["maxCarryingCapacity"];
+// for (auto& el : j.items()) 
+// {
+// 	if (el.key() == "boxes")
+// 	{
+// 		// std::cout << el.key() << " : " << el.value() << "\n";
+// 		// std::cout << el["maxCarryingCapacity"];
 
-		auto test = el.value();
+// 		auto test = el.value();
 
-		auto test1 = test["maxCarryingCapacity"];
+// 		auto test1 = test[0];
+
+// 		// auto test1 = test["maxCarryingCapacity"];
 		
-		std::cout << test1["half_x"];
+// 		// std::cout << test1["half_x"];
 
-	}
+// 		std::cout << test1;
+
+// 	}
   
-}
+// }
 
 // if (j.find("foo") != j.end()) 
 // {
@@ -72,12 +80,12 @@ for (auto& el : j.items())
 
 	// do some stuff
 
-	json j_out;
-	j_out["steps"] = json::array();
-	// do some stuff
+	// json j_out;
+	// j_out["steps"] = json::array();
+	// // do some stuff
 
-	std::ofstream o(outputFileName);
-	o << std::setw(4) << j_out << std::endl;
+	// std::ofstream o(outputFileName);
+	// o << std::setw(4) << j_out << std::endl;
 }
 
 int 	main(int argc, char **argv)

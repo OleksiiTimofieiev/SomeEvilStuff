@@ -8,11 +8,13 @@ DIR_OBJ		= 	./obj/
 #-------------------------- Header  ------------------------------------------
 
 hpp         = 	IGalaxyPathFinder.hpp \
-				json.hpp
+				json.hpp \
+				CParser.hpp
 
 #-------------------------- Source  -------------------------------------------
 
-SRC         =	ExampleSolution.cpp
+SRC         =	ExampleSolution.cpp \
+				CParser.cpp
 
 INC_PATH 	= 	$(addprefix $(DIR_INC), $(HPP))
 OBJ 		= 	$(addprefix $(DIR_OBJ), $(SRC:.cpp=.o))
