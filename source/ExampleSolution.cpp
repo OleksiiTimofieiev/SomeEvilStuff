@@ -6,6 +6,8 @@
 #include <vector>
 #include <iomanip>
 
+using namespace nlohmann;
+
 struct box
 {
 	int id;
@@ -41,18 +43,18 @@ public:
 
 void NameSurnamePathFinder::FindSolution(const char* inputJasonFile, const char* outputFileName)
 {
-	// std::ifstream i(inputJasonFile);
+	std::ifstream i(inputJasonFile);
 	
-	// json j = json::parse(i, nullptr, false);
+	json j = json::parse(i, nullptr, false);
 
-	// // do some stuff
+	// do some stuff
 
-	// json j_out;
-	// j_out["steps"] = json::array();
-	// // do some stuff
+	json j_out;
+	j_out["steps"] = json::array();
+	// do some stuff
 
-	// std::ofstream o(outputFileName);
-	// o << std::setw(4) << j_out << std::endl;
+	std::ofstream o(outputFileName);
+	o << std::setw(4) << j_out << std::endl;
 }
 
 int 	main(int argc, char **argv)
