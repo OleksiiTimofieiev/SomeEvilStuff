@@ -23,7 +23,6 @@ void    CParser::parseJSONInput(void)
             // std::cout << test1["half_x"];
 
             std::cout << test1["boxId"];
-
         }
     }
 }
