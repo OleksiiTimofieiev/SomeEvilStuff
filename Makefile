@@ -7,7 +7,8 @@ DIR_OBJ		= 	./obj/
 
 #-------------------------- Header  ------------------------------------------
 
-hpp         = 	IGalaxyPathFinder.hpp
+hpp         = 	IGalaxyPathFinder.hpp \
+				json.hpp
 
 #-------------------------- Source  -------------------------------------------
 
