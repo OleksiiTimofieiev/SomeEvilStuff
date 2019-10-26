@@ -39,7 +39,7 @@ struct box
 
 struct targetPoint
 {
-	// int id;
+	int pointId;
 	posicion pos;
 	float load;
 	std::map<int, float> distances;
@@ -61,11 +61,17 @@ public:
 	virtual void FindSolution(const char* inputJasonFile, const char* outputFileName);
 	virtual const char* ShowCaptainName() { return "Name Surname"; }
 	void setBoxes (int id, box& box1);
+	void setTargetPoint (int id, targetPoint& currentTargetPoints);
 };
 
 void NameSurnamePathFinder::setBoxes(int id, box& box1)
 {
 	boxes.insert(std::pair<int, box>(id, box1));
+}
+
+void NameSurnamePathFinder::setTargetPoint(int id, targetPoint& currentTargetPoints)
+{
+	targetPoints.insert(std::pair<int, targetPoint>(id, currentTargetPoints));
 }
 
 void NameSurnamePathFinder::FindSolution(const char* inputJasonFile, const char* outputFileName)
@@ -112,45 +118,57 @@ void NameSurnamePathFinder::insertDistances(std::map<int, targetPoint>& src)
 	}
 }
 
-box&  InitBoxes(int id)
+box&  InitBoxes(int id, int tmp)
 {
 	box mBox;
 	
-	if (id == 195)
+	if (id == 195 && tmp == 0)
 	{
 		mBox.boxSize.half_x = 32;
 		mBox.boxSize.half_y = 43;
 		mBox.boxSize.half_z = 11;
 		mBox.weight = 24.549999237060547;
-		mBox.targetPointId = 195;
 		mBox.boxId = 596;
 	}
-	else if (id == 19545646464)
+	else if (id == 195 && tmp == 1)
 	{
 		mBox.boxSize.half_x = 26;
 		mBox.boxSize.half_y = 30;
 		mBox.boxSize.half_z = 16;
 		mBox.weight = 47.130001068115234;
-		mBox.targetPointId = 195;
 		mBox.boxId = 985;
 	}
-	else if (id == 782)
+	else if (id == 782 && tmp == 0)
 	{
 		mBox.boxSize.half_x = 23;
 		mBox.boxSize.half_y = 32;
 		mBox.boxSize.half_z = 25;
 		mBox.weight = 29.100000381469727;
-		mBox.targetPointId = 782;
 		mBox.boxId = 10;
 	}
-	else if (id == 551)
+	else if (id == 782 && tmp == 1)
+	{
+		mBox.boxSize.half_x = 34;
+		mBox.boxSize.half_y = 50;
+		mBox.boxSize.half_z = 33;
+		mBox.weight = 27.510000228881836;
+		mBox.boxId = 189;
+	}
+	else if (id == 551 && tmp == 0)
 	{
 		mBox.boxSize.half_x = 50;
 		mBox.boxSize.half_y = 37;
 		mBox.boxSize.half_z = 24;
 		mBox.weight = 34.470001220703125;
-		mBox.targetPointId = 551;
 		mBox.boxId = 517;
+	}
+	else if (id == 551 && tmp == 1)
+	{
+		mBox.boxSize.half_x = 33;
+		mBox.boxSize.half_y = 1;
+		mBox.boxSize.half_z = 25;
+		mBox.weight = 44.139999389648438;
+		mBox.boxId = 388;
 	}
 	else if (id == 542)
 	{
@@ -158,7 +176,6 @@ box&  InitBoxes(int id)
 		mBox.boxSize.half_y = 9;
 		mBox.boxSize.half_z = 36;
 		mBox.weight = 32.979999542236328;
-		mBox.targetPointId = 542;
 		mBox.boxId = 221;
 	}
 	else if (id == 870)
@@ -167,11 +184,38 @@ box&  InitBoxes(int id)
 		mBox.boxSize.half_y = 16;
 		mBox.boxSize.half_z = 45;
 		mBox.weight = 12.060000419616699;
-		mBox.targetPointId = 870;
-		mBox.boxId = 728;
+		mBox.boxId = id;
 	}
 
+	mBox.targetPointId = id;
 	return mBox;
+}
+
+targetPoint&  InitTargetPoints(int id)
+{
+	targetPoint mTargetPoint;
+	
+	if (id == 195)
+	{
+		mTargetPoint.pos.x = 70;
+		mTargetPoint.pos.x = -72;
+		mTargetPoint.pos.x = 85;
+	}
+	else if (id == 782)
+	{
+		mTargetPoint.pos.x = -99;
+		mTargetPoint.pos.x = 78;
+		mTargetPoint.pos.x = -88;
+	}
+	else if (id == 551)
+	{
+		mTargetPoint.pos.x = 83;
+		mTargetPoint.pos.x = -37;
+		mTargetPoint.pos.x = 99;
+	}
+
+	mTargetPoint.pointId = id;
+	return mTargetPoint;
 }
 
 int 	main(int argc, char **argv)
@@ -180,11 +224,19 @@ int 	main(int argc, char **argv)
 	NameSurnamePathFinder mNameSurnamePathFinder;
 	CShip mShip;
 
-	mNameSurnamePathFinder.setBoxes(596, InitBoxes(596));
-	mNameSurnamePathFinder.setBoxes(782, InitBoxes(782));
-	mNameSurnamePathFinder.setBoxes(551, InitBoxes(551));
-	mNameSurnamePathFinder.setBoxes(542, InitBoxes(542));
-	mNameSurnamePathFinder.setBoxes(870, InitBoxes(870));
+	// set targetPoints
+	mNameSurnamePathFinder.setTargetPoint(195, InitTargetPoints(195));
+	mNameSurnamePathFinder.setTargetPoint(782, InitTargetPoints(782));
+	mNameSurnamePathFinder.setTargetPoint(551, InitTargetPoints(551));
+
+	// set box
+	mNameSurnamePathFinder.setBoxes(195, InitBoxes(195, 0));
+	mNameSurnamePathFinder.setBoxes(195, InitBoxes(195, 1));
+	mNameSurnamePathFinder.setBoxes(782, InitBoxes(782, 0));
+	mNameSurnamePathFinder.setBoxes(782, InitBoxes(782, 1));
+	mNameSurnamePathFinder.setBoxes(551, InitBoxes(551, 0));
+	// mNameSurnamePathFinder.setBoxes(542, InitBoxes(542));
+	// mNameSurnamePathFinder.setBoxes(870, InitBoxes(870));
 
 	// mNameSurnamePathFinder.FindSolution("./jsonFiles/inputData1.json", "./test");
 
