@@ -41,7 +41,7 @@ struct targetPoint
 {
 	// int id;
 	posicion pos;
-
+	float load;
 	std::map<int, float> distances;
 };
 
