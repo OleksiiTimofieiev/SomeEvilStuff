@@ -213,6 +213,12 @@ targetPoint&  InitTargetPoints(int id)
 		mTargetPoint.pos.x = -37;
 		mTargetPoint.pos.x = 99;
 	}
+	else if (id == 0)
+	{
+		mTargetPoint.pos.x = 80;
+		mTargetPoint.pos.x = -30;
+		mTargetPoint.pos.x = 0;
+	}
 
 	mTargetPoint.pointId = id;
 	return mTargetPoint;
@@ -225,6 +231,7 @@ int 	main(int argc, char **argv)
 	CShip mShip;
 
 	// set targetPoints
+	mNameSurnamePathFinder.setTargetPoint(0, InitTargetPoints(0));
 	mNameSurnamePathFinder.setTargetPoint(195, InitTargetPoints(195));
 	mNameSurnamePathFinder.setTargetPoint(782, InitTargetPoints(782));
 	mNameSurnamePathFinder.setTargetPoint(551, InitTargetPoints(551));
@@ -237,10 +244,7 @@ int 	main(int argc, char **argv)
 	mNameSurnamePathFinder.setBoxes(551, InitBoxes(551, 0));
 	// mNameSurnamePathFinder.setBoxes(542, InitBoxes(542));
 	// mNameSurnamePathFinder.setBoxes(870, InitBoxes(870));
-
 	// mNameSurnamePathFinder.FindSolution("./jsonFiles/inputData1.json", "./test");
-
-
 
 	return 0;
 }
