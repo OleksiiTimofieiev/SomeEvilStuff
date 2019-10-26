@@ -61,6 +61,7 @@ public:
 	virtual void FindSolution(const char* inputJasonFile, const char* outputFileName);
 	virtual const char* ShowCaptainName() { return "Name Surname"; }
 	void setBoxes (int id, box& box1);
+	void calculateMaxLoad();
 };
 
 void NameSurnamePathFinder::setBoxes(int id, box& box1)
@@ -109,6 +110,14 @@ void NameSurnamePathFinder::insertDistances(std::map<int, targetPoint>& src)
 				continue;
 			}
 		}
+	}
+}
+
+void NameSurnamePathFinder::calculateMaxLoad()
+{
+	for (auto j: boxes)
+	{
+		targetPoints.find(j.second.targetPointId)->second.load += j.second.weight;
 	}
 }
 
